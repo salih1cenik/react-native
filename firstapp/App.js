@@ -4,6 +4,13 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./src/screens/HomeScreen";
 import Kurslarım from "./src/screens/CoursesScreen";
+import CoursesInformationScreen from "./src/screens/CoursesInformationScreen";
+import CounterScreen from "./src/screens/CounterScreen";
+import BoxScreen from "./src/screens/BoxScreen";
+import ColorChangeScreen from "./src/screens/ColorChangeScreen";
+import PasswordScreen from "./src/screens/PasswordScreen";
+import DesignScreen from "./src/screens/DesignScreen";
+import PositionScreen from "./src/screens/PositionScreen";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -12,6 +19,18 @@ export default function App() {
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Anasayfa" component={HomeScreen} />
         <Stack.Screen name="Kurslarım" component={Kurslarım} />
+        <Stack.Screen
+          name="KursBilgilerim"
+          component={CoursesInformationScreen}
+        />
+
+        <Stack.Screen name="Sayac" component={CounterScreen} />
+        <Stack.Screen name="Kutu" component={BoxScreen} />
+
+        <Stack.Screen name="Renk Değiştir" component={ColorChangeScreen} />
+        <Stack.Screen name="Şifre Ekranı" component={PasswordScreen} />
+        <Stack.Screen name="Design Ekranı" component={DesignScreen} />
+        <Stack.Screen name="Position Ekranı" component={PositionScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
