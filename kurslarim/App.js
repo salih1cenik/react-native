@@ -30,7 +30,6 @@ export default function App() {
         />
         <FlatList
           data={courses}
-          keyExtractor={(item) => item.id} // KeyExtractor eklendi
           renderItem={({ item }) => (
             <View style={styles.courseItem}>
               <Text style={styles.courseText}>{item.text}</Text>{" "}
