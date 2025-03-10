@@ -6,12 +6,22 @@ import {
   Button,
   TouchableOpacity,
 } from "react-native";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../context/BlogContext";
-import Feather from "@expo/vector-icons/Feather";
+import { Feather } from "@expo/vector-icons";
 
 export default function IndexScreen({ navigation }) {
-  const { state, addBlogPost, deleteBlogPost } = useContext(Context);
+  const { state, addBlogPost, deleteBlogPost, getBlogPosts } =
+    useContext(Context);
+
+  useEffect(() => {
+    getBlogPosts();
+
+    const unsubscribe = navigation.addListener("focus", () => {
+      getBlogPosts();
+    });
+    return unsubscribe;
+  }, []);
   return (
     <View>
       {/* <Text>IndexScreen </Text> */}
@@ -21,7 +31,9 @@ export default function IndexScreen({ navigation }) {
         keyExtractor={(blogPost) => blogPost.id}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity onPress={() => navigation.navigate("Show",{id:item.id})}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Show", { id: item.id })}
+            >
               <View style={styles.row}>
                 <Text style={styles.title}>{item.title}</Text>
                 <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
@@ -45,7 +57,6 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     borderColor: "gray",
   },
-
   title: {
     fontSize: 18,
   },

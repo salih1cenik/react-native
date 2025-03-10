@@ -7,16 +7,10 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 
-export default function BlogPostForm({
-  onSubmit,
-  initialValues = {},
-  isEditable,
-}) {
-  const [title, setTitle] = useState(
-    initialValues.title ? initialValues.title : ""
-  );
+export default function BlogPostForm({ onSubmit, initialValues, isEditable }) {
+  const [title, setTitle] = useState(initialValues ? initialValues.title : "");
   const [content, setContent] = useState(
-    initialValues.content ? initialValues.content : ""
+    initialValues ? initialValues.content : ""
   );
   return (
     <View style={styles.main}>
@@ -64,7 +58,9 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 15,
   },
-  buttonMain: { padding: 30 },
+  buttonMain: {
+    padding: 30,
+  },
   buttonView: {
     backgroundColor: "green",
     padding: 10,
@@ -72,5 +68,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 20,
   },
-  buttonText: { color: "white", fontSize: 18 },
+  buttonText: {
+    color: "white",
+    fontSize: 20,
+  },
 });
